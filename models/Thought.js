@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const Reaction = require("./Reaction");
 
 // Schema to create Post model
-const applicationSchema = new Schema(
+const thoughtSchema = new Schema(
   {
     published: {
       type: Boolean,
