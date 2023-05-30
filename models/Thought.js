@@ -41,6 +41,6 @@ applicationSchema
   });
 
 // Initialize our Application model
-const Application = model("application", applicationSchema);
+const Thought = model("thought", thoughtSchema);
 
-module.exports = Application;
+module.exports = Thought;
