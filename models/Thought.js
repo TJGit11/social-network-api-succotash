@@ -1,28 +1,57 @@
-const { Schema, model } = require("mongoose");
-// was Thought
-const Reaction = require("./Reaction");
+const { Schema, Types, model } = require("mongoose");
 
-// Schema to create Post model
-const thoughtSchema = new Schema(
+const reactionSchema = new Schema(
   {
-    published: {
-      type: Boolean,
-      default: false,
+    reactionId: {
+      type: Schema.Types.ObjectId,
+      default: () => new Types.ObjectId(),
+    },
+    reactionBody: {
+      type: String,
+      required: true,
+      maxlength: 280,
+    },
+    username: {
+      type: String,
+      required: true,
     },
     createdAt: {
       type: Date,
       default: Date.now,
+      get: function (date) {
+        date.toLocaleDateString();
+      },
     },
-    buildSuccess: {
-      type: Boolean,
-      default: true,
+  },
+  {
+    toJSON: {
+      getters: true,
     },
-    description: {
+    id: false,
+  }
+);
+
+// Schema to create Post model
+const thoughtSchema = new Schema(
+  {
+    thoughtText: {
       type: String,
-      minLength: 15,
-      maxLength: 500,
+      required: true,
+      minlength: 1,
+      maxlength: 280,
     },
-    tags: [Tag],
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: function (date) {
+        date.toLocaleDateString();
+      },
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    reactions: [reactionSchema],
   },
   {
     toJSON: {
@@ -34,10 +63,10 @@ const thoughtSchema = new Schema(
 
 // Create a virtual property `getTags` that gets the amount of tags associated with an thought
 thoughtSchema
-  .virtual("getResponses")
+  .virtual("reactionCount")
   // Getter
   .get(function () {
-    return this.tags.length;
+    return this.reaction.length;
   });
 
 // Initialize our Thought model
