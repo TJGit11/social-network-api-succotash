@@ -1,35 +1,35 @@
-const connection = require('../config/connection');
-const { User, Application } = require('../models');
-const { getRandomName, getRandomApplications } = require('./data');
+const connection = require("../config/connection");
+const { User, Thought } = require("../models");
+const { getRandomUsername, getRandomThoughts } = require("./data");
 
-connection.on('error', (err) => err);
+connection.on("error", (err) => err);
 
-connection.once('open', async () => {
-  console.log('connected');
-  await Application.deleteMany({});
+connection.once("open", async () => {
+  console.log("connected");
+  await Thought.deleteMany({});
   await User.deleteMany({});
 
-  const users = [];
-  const applications = getRandomApplications(10);
+  // const users = [];
+  // const thoughts = getRandomThoughts(10);
 
-  for (let i = 0; i < 20; i++) {
-    const fullName = getRandomName();
-    const first = fullName.split(' ')[0];
-    const last = fullName.split(' ')[1];
+  // for (let i = 0; i < 20; i++) {
+  //   const fullUsername = getRandomUsername();
+  //   // const first = fullName.split(" ")[0];
+  //   // const last = fullName.split(" ")[1];
 
-    users.push({
-      first,
-      last,
-      age: Math.floor(Math.random() * (99 - 18 + 1) + 18),
-    });
-  }
+  //   // users.push({
+  //   //   first,
+  //   //   last,
+  //   //   age: Math.floor(Math.random() * (99 - 18 + 1) + 18),
+  //   // });
+  // }
 
-  await User.collection.insertMany(users);
-  await Application.collection.insertMany(applications);
+  // await User.collection.insertMany(users);
+  // await Thought.collection.insertMany(thoughts);
 
-  // loop through the saved applications, for each application we need to generate a application response and insert the application responses
+  // loop through the saved thoughts, for each thought we need to generate a thought response and insert the thought responses
   console.table(users);
-  console.table(applications);
-  console.info('Seeding complete! 🌱');
+  console.table(thoughts);
+  console.info("Seeding complete! 🌱");
   process.exit(0);
 });

@@ -32,4 +32,4 @@ const reactionSchema = new Schema(
   }
 );
 
-module.exports = { reactionSchema, Reaction };
+module.exports = { reactionSchema };
