@@ -53,6 +53,8 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
+  // Add a friend to User
   async addFriend(req, res) {
     try {
       const user = await User.findOneAndUpdate(
@@ -64,6 +66,23 @@ module.exports = {
       );
       if (!user) {
         return res.status(404).json({ message: "No user with this id!" });
+      }
+      res.json(user);
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  },
+  // Delete friend from user
+  async deleteFriend(req, res) {
+    try {
+      const user = await User.findOneAndUpdate(
+        { _id: req.params.userId },
+        { $pull: { friends: req.params.friendId } },
+        { runValidators: true, new: true }
+      );
+      if (!user) {
+        return res.status(404).json({ message: "No friend with this id!" });
       }
       res.json(user);
     } catch (err) {
