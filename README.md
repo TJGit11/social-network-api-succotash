@@ -14,10 +14,10 @@ This is an API for a social media platform that allows users to share their thou
 ## Installation
 
 The user will want to install: <br/>
-[Mongoose](https://www.npmjs.com/package/mongoose)
-[MongoDB](https://www.mongodb.com/docs/manual/installation/)
-[Node.js](https://nodejs.org/en/download)
-[Nodemon](https://www.npmjs.com/package/nodemon) (optional)
+[Mongoose](https://www.npmjs.com/package/mongoose) <br/>
+[MongoDB](https://www.mongodb.com/docs/manual/installation/)<br/>
+[Node.js](https://nodejs.org/en/download)<br/>
+[Nodemon](https://www.npmjs.com/package/nodemon) (optional)<br/>
 [Express.js](https://expressjs.com/)
 
 ## Tests
