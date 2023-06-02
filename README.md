@@ -11,7 +11,7 @@
 
 This is an API for a social media platform that allows users to share their thoughts, react to friends’ thoughts, and create a friend list. 
 
- ### [Check out the demo video here] (https://drive.google.com/file/d/1mQEOm0CcLCeiepIGjs3fUYuMI9oxNVBI/view)
+### [Check out the demo video here](https://drive.google.com/file/d/1mQEOm0CcLCeiepIGjs3fUYuMI9oxNVBI/view)
 
 ## Installation
 
